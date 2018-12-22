@@ -67,7 +67,6 @@
         provide () {
             return {
                 selectedOption: this.selectedOption,
-                selectedOptions: this.selectedOption, // multiple mode api improvement
                 eventBusId: this.eventBusId,
                 multiple: this.multiple,
                 selected: this.selected
@@ -80,6 +79,7 @@
                 filteredOptions: this.filteredOptions,
                 isOpen: this.isOpen,
                 selectedOption: this.selectedOption,
+                selectedOptions: this.selectedOption, // multiple mode api improvement
                 activeOptionIndex: this.activeOptionIndex,
                 $get: this.get,
                 $selected: this.selected,
