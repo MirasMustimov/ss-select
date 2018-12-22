@@ -81,7 +81,7 @@
                 isOpen: this.isOpen,
                 selectedOption: this.selectedOption,
                 activeOptionIndex: this.activeOptionIndex,
-                $access: this.access,
+                $get: this.get,
                 $selected: this.selected,
                 $unselect: this.unselect,
                 $reset: this.reset,
@@ -93,13 +93,13 @@
                 if (this.multiple) {
                     return this.contains(this.selectedOption, option, this.trackBy)
                 } else {
-                    return this.access(this.selectedOption, this.trackBy) == this.access(option, this.trackBy)
+                    return this.get(this.selectedOption, this.trackBy) == this.get(option, this.trackBy)
                 }
             },
 
             unselect(option) {
                 let index = this.selectedOption.findIndex(selectedOption => {
-                    return this.access(selectedOption, this.trackBy) == this.access(option, this.trackBy)
+                    return this.get(selectedOption, this.trackBy) == this.get(option, this.trackBy)
                 })
 
                 this.selectedOption.splice(index, 1)
@@ -179,7 +179,7 @@
             filterOptions() {
                 this.busListen('searchInput', query => {
                     this.displayedOptions = this.options.filter(option => {
-                        return (this.searchBy ? this.access(option, this.searchBy) : option)
+                        return (this.searchBy ? this.get(option, this.searchBy) : option)
                             .toLowerCase()
                             .includes(query.toLowerCase())
                     })

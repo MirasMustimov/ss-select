@@ -1,6 +1,6 @@
 const utilsMixin = {
     methods: {
-        access(object, keys) {
+        get(object, keys) {
             if (! (object instanceof Object)) return null
 
             return keys.split('.').reduce((result, key) => {
@@ -8,9 +8,9 @@ const utilsMixin = {
                 return result[key]
             }, object)
         },
-        
+
         contains(haystack, needle, key) {
-            return haystack.findIndex(item => this.access(item, key) == this.access(needle, key)) > -1
+            return haystack.findIndex(item => this.get(item, key) == this.get(needle, key)) > -1
         },
     }
 }
