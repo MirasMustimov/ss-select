@@ -40,7 +40,7 @@
             return {
                 isOpen: false,
                 selectedOption: this.multiple ? [] : null,
-                displayedOptions: this.options,
+                filteredOptions: this.options,
                 eventBusId: Math.random().toString(36).substring(7),
                 activeOptionIndex: -1
             }
@@ -51,7 +51,7 @@
                 this.selectedOption = this.value
             }
 
-            this.$watch('options', () => this.displayedOptions = this.options)
+            this.$watch('options', () => this.filteredOptions = this.options)
 
             this.$watch('isOpen', () => this.$emit(this.isOpen ? 'open' : 'close'))
         },
@@ -77,7 +77,7 @@
         render() {
             return this.$scopedSlots.default({
                 options: this.options,
-                displayedOptions: this.displayedOptions,
+                filteredOptions: this.filteredOptions,
                 isOpen: this.isOpen,
                 selectedOption: this.selectedOption,
                 activeOptionIndex: this.activeOptionIndex,
@@ -178,13 +178,13 @@
 
             filterOptions() {
                 this.busListen('searchInput', query => {
-                    this.displayedOptions = this.options.filter(option => {
+                    this.filteredOptions = this.options.filter(option => {
                         return (this.searchBy ? this.get(option, this.searchBy) : option)
                             .toLowerCase()
                             .includes(query.toLowerCase())
                     })
 
-                    if (this.displayedOptions.length === 0) {
+                    if (this.filteredOptions.length === 0) {
                         this.$emit('noSearchResults')
                     }
                 })
@@ -204,7 +204,7 @@
                 let enter = 13
 
                 if (keyCode === enter) {
-                    this.busEmit('optionSelected', this.displayedOptions[this.activeOptionIndex])
+                    this.busEmit('optionSelected', this.filteredOptions[this.activeOptionIndex])
                 }
 
                 return this
@@ -216,7 +216,7 @@
 
                 if (keyCode === up) {
                     if (this.activeOptionIndex - 1 < 0) {
-                        this.activeOptionIndex = this.displayedOptions.length - 1
+                        this.activeOptionIndex = this.filteredOptions.length - 1
                     } else {
                         this.activeOptionIndex--
                     }
@@ -225,7 +225,7 @@
                 }
 
                 if (keyCode === down) {
-                    if (this.activeOptionIndex + 1 > this.displayedOptions.length - 1) {
+                    if (this.activeOptionIndex + 1 > this.filteredOptions.length - 1) {
                         this.activeOptionIndex = 0
                     } else {
                         this.activeOptionIndex++

@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="flex flex-col items-center justify-center h-screen mb-2">
       <ss-select :options="songs" track-by="name" search-by="name" class="relative" style="width: 12rem">
-        <div slot-scope="{ displayedOptions, selectedOption, isOpen, activeOptionIndex, $selected, $get, $reset }">
+        <div slot-scope="{ filteredOptions, selectedOption, isOpen, activeOptionIndex, $selected, $get, $reset }">
           <ss-placeholder class="flex items-center border p-1 select-none">
             <div class="flex-1">{{ $get(selectedOption, 'name') || 'Pick a song' }}</div>
             <button v-if="selectedOption && !isOpen" @click.stop="$reset" class="flex-none">
@@ -14,7 +14,7 @@
             <ss-search-input class="w-full border focus:outline-none"></ss-search-input>
 
             <div>
-              <ss-option v-for="(song, index) in displayedOptions"
+              <ss-option v-for="(song, index) in filteredOptions"
                          :value="song"
                          :index="index"
                          :key="song.name"
