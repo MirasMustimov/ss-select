@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="flex flex-col items-center justify-center h-screen mb-2">
       <ss-select :options="songs" track-by="name" search-by="name" class="relative" style="width: 12rem">
-        <div slot-scope="{ filteredOptions, selectedOption, isOpen, activeOptionIndex, $selected, $get, $reset }">
+        <div slot-scope="{ filteredOptions, selectedOption, isOpen, activeOptionIndex, $selected, $disabled, $get, $reset }">
           <ss-placeholder class="flex items-center border p-1 select-none">
             <div class="flex-1">{{ $get(selectedOption, 'name') || 'Pick a song' }}</div>
             <button v-if="selectedOption && !isOpen" @click.stop="$reset" class="flex-none">
@@ -20,7 +20,8 @@
                          :key="song.name"
                          :class="[
                             activeOptionIndex == index ? 'bg-blue text-white' : '',
-                            $selected(song) ? 'bg-purple text-white' : ''
+                            $selected(song) ? 'bg-purple text-white' : '',
+                            $disabled(song) ? 'opacity-50' : ''
                          ]"
                          class="p-1 border-b cursor-default whitespace-no-wrap">
                 {{ song.name }}
@@ -44,21 +45,25 @@
                 {
                   band: 'Paramore',
                   name: 'Ignorance',
+                  disabled: false
                 },
 
                 {
                   band: 'Paramore',
                   name: 'Rose Coloured Boy',
+                  disabled: true
                 },
 
                 {
                   band: 'Paramore',
-                  name: 'Hard Times'
+                  name: 'Hard Times',
+                  disabled: false
                 },
 
                 {
                   band: 'Paramore',
                   name: 'Decode',
+                  disabled: false
                 },
               ]
           }

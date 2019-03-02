@@ -2,11 +2,12 @@
     import 'outclick'
     import event from './event-mixin'
     import utils from './utils-mixin'
+    import nextOption from './next-option-mixin'
 
     export default {
         name: 'ss-select',
 
-        mixins: [ event, utils ],
+        mixins: [ event, utils, nextOption ],
 
         props: {
             options: {
@@ -31,6 +32,12 @@
                 default: ''
             },
 
+            disableBy: {
+                type: String,
+                required: false,
+                default: 'disabled'
+            },
+
             multiple: {
                 default: false
             }
@@ -42,7 +49,7 @@
                 selectedOption: this.multiple ? [] : null,
                 filteredOptions: this.options,
                 eventBusId: Math.random().toString(36).substring(7),
-                activeOptionIndex: -1
+                activeOptionIndex: 0
             }
         },
 
@@ -83,6 +90,7 @@
                 activeOptionIndex: this.activeOptionIndex,
                 $get: this.get,
                 $selected: this.selected,
+                $disabled: this.disabled,
                 $unselect: this.unselect,
                 $reset: this.reset,
             })
@@ -95,6 +103,10 @@
                 } else {
                     return this.get(this.selectedOption, this.trackBy) == this.get(option, this.trackBy)
                 }
+            },
+
+            disabled(option) {
+                return !! this.get(option, this.disableBy)
             },
 
             unselect(option) {
@@ -171,7 +183,11 @@
             },
 
             hoverOverOptions() {
-                this.busListen('optionHover', index => this.activeOptionIndex = index)
+                this.busListen('optionHover', index => {
+                    if (! this.disabled(this.filteredOptions[index])) {
+                        this.activeOptionIndex = index
+                    }
+                })
 
                 return this
             },
@@ -214,25 +230,16 @@
                 let up = 38
                 let down = 40
 
-                if (keyCode === up) {
-                    if (this.activeOptionIndex - 1 < 0) {
-                        this.activeOptionIndex = this.filteredOptions.length - 1
-                    } else {
-                        this.activeOptionIndex--
-                    }
-
-                    this.busEmit('activeOptionIndexChange', this.activeOptionIndex)
-                }
-
                 if (keyCode === down) {
-                    if (this.activeOptionIndex + 1 > this.filteredOptions.length - 1) {
-                        this.activeOptionIndex = 0
-                    } else {
-                        this.activeOptionIndex++
-                    }
-
-                    this.busEmit('activeOptionIndexChange', this.activeOptionIndex)
+                    this.activeOptionIndex = this.nextAvailableOptionIndex(this.filteredOptions, this.activeOptionIndex)
                 }
+
+                if (keyCode === up) {
+                    let reverse = true
+                    this.activeOptionIndex = this.nextAvailableOptionIndex(this.filteredOptions, this.activeOptionIndex, reverse)
+                }
+
+                this.busEmit('activeOptionIndexChange', this.activeOptionIndex)
 
                 return this
             }
