@@ -10,7 +10,7 @@
             <svg v-else class="inline-block w-3 h-3 flex-none" :class="[ isOpen ? 'ss-rotate-180' : '' ]" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
           </ss-placeholder>
 
-          <div v-if="isOpen" class="absolute z-10 min-w-full border">
+          <div v-show="isOpen" class="absolute z-10 min-w-full border">
             <ss-search-input class="w-full border focus:outline-none"></ss-search-input>
 
             <div>
