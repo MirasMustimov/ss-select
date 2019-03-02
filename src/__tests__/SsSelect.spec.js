@@ -16,11 +16,25 @@ describe('SsSelect', () => {
 
     let wrapper
 
+    let click = (selector) => {
+        let element = selector ? wrapper.find(selector) : wrapper
+        element.trigger('click')
+    }
+
+    let type = (selector, text) => {
+        let input = wrapper.find(selector)
+        input.element.value = text
+        input.trigger('input')
+    }
+
+    let keydown = key => {
+        wrapper.trigger('keydown.' + key)
+    }
+
     beforeEach(() => {
       wrapper = mount(SsSelect, {
-          propsData: { options: songs, trackBy: 'name', searchBy: 'name' },
           //  if search y is not provided then bugs appear in search algorithm
-
+          propsData: { options: songs, trackBy: 'name', searchBy: 'name' },
           stubs: { SsOption, SsSearchInput, SsPlaceholder },
           scopedSlots: {
               default: `
@@ -45,29 +59,50 @@ describe('SsSelect', () => {
         songs.forEach(song => expect(wrapper.html()).toContain(song.name))
     })
 
-    it('can select options', () => {
+    it('can select options by click', () => {
         expect(wrapper.find('.selected-option').html()).toContain('Select a song')
 
-        wrapper.find('.option').trigger('click')
+        click('.option')
 
+        expect(wrapper.vm.selectedOption.name).toBe(songs[0].name)
+    })
+
+    it('can select options on enter key press', () => {
+        expect(wrapper.vm.selectedOption).toBe(null)
+
+        click('.placeholder')
+        keydown('enter')
         expect(wrapper.vm.selectedOption.name).toBe(songs[0].name)
     })
 
     it('opens when placeholder is clicked and closes when option is selected', () => {
         expect(wrapper.vm.isOpen).toBe(false)
-        wrapper.find('.placeholder').trigger('click')
+        click('.placeholder')
 
         expect(wrapper.vm.isOpen).toBe(true)
 
-        wrapper.find('.option').trigger('click')
+        click('.option')
         expect(wrapper.vm.isOpen).toBe(false)
+    })
+
+    it('closes on escape key press', () => {
+        expect(wrapper.vm.isOpen).toBe(false)
+        click('.placeholder')
+
+        expect(wrapper.vm.isOpen).toBe(true)
+
+        keydown('esc')
+        expect(wrapper.vm.isOpen).toBe(false)
+    })
+
+    it('closes on outclick', () => {
+        //
     })
 
     it('can filter options', () => {
         expect(wrapper.vm.filteredOptions.length).toBe(songs.length)
 
-        wrapper.find('.search-input').element.value = songs[0].name
-        wrapper.find('.search-input').trigger('input')
+        type('.search-input', songs[0].name)
 
         expect(wrapper.vm.filteredOptions.length).toBe(1)
         expect(wrapper.vm.filteredOptions[0].name).toBe(songs[0].name)
@@ -84,36 +119,36 @@ describe('SsSelect', () => {
     it('changes active option index on navigating using arrow keys', () => {
         expect(wrapper.vm.activeOptionIndex).toBe(0)
 
-        wrapper.trigger('keydown.down')
+        keydown('down')
         expect(wrapper.vm.activeOptionIndex).toBe(1)
 
-        wrapper.trigger('keydown.up')
+        keydown('up')
         expect(wrapper.vm.activeOptionIndex).toBe(0)
     })
 
     it('skips disabled options when navigating using arrow keys', () => {
         expect(wrapper.vm.activeOptionIndex).toBe(0)
 
-        wrapper.trigger('keydown.down')
+        keydown('down')
         expect(wrapper.vm.activeOptionIndex).toBe(1)
 
-        wrapper.trigger('keydown.down')
+        keydown('down')
         expect(wrapper.vm.activeOptionIndex).toBe(3)
     })
 
     it('sets last option as active before first', () => {
         expect(wrapper.vm.activeOptionIndex).toBe(0)
 
-        wrapper.trigger('keydown.up')
+        keydown('up')
 
         expect(wrapper.vm.activeOptionIndex).toBe(wrapper.vm.filteredOptions.length - 1)
     })
 
     it('sets first option as active after last', () => {
         expect(wrapper.vm.activeOptionIndex).toBe(0)
-        wrapper.trigger('keydown.down')
-        wrapper.trigger('keydown.down')
-        wrapper.trigger('keydown.down')
+        keydown('down')
+        keydown('down')
+        keydown('down')
         expect(wrapper.vm.activeOptionIndex).toBe(0)
     })
 })
