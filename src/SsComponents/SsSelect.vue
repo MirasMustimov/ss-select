@@ -4,6 +4,11 @@
     import utils from './utils-mixin'
     import nextOption from './next-option-mixin'
 
+    const ESC = 27
+    const ENTER = 13
+    const ARROW_UP = 38
+    const ARROW_DOWN = 40
+
     export default {
         name: 'ss-select',
 
@@ -135,17 +140,13 @@
                 this.$el.tabIndex = 0
 
                 this.$el.addEventListener('keydown', event => {
-                    let esc = 27
-                    let enter = 13
-                    let up = 38
-                    let down = 40
-                    let keys = [ esc, enter, up, down ]
-                    if (! keys.includes(event.keyCode)) return
+                    let keyCode = event.keyCode
+                    if (! [ ESC, ENTER, ARROW_UP, ARROW_DOWN ].includes(keyCode)) return
 
                     event.preventDefault()
-                    this.onEscape(event.keyCode)
-                        .onEnter(event.keyCode)
-                        .onUpAndDown(event.keyCode)
+                    this.onEscape(keyCode)
+                        .onEnter(keyCode)
+                        .onUpAndDown(keyCode)
                 }, false)
 
                 return this
@@ -209,17 +210,13 @@
             },
 
             onEscape(keyCode) {
-                let esc = 27
-
-                if (keyCode === esc) this.isOpen = false
+                if (keyCode === ESC) this.isOpen = false
 
                 return this
             },
 
             onEnter(keyCode) {
-                let enter = 13
-
-                if (keyCode === enter) {
+                if (keyCode === ENTER) {
                     this.busEmit('optionSelected', this.filteredOptions[this.activeOptionIndex])
                 }
 
@@ -227,14 +224,11 @@
             },
 
             onUpAndDown(keyCode) {
-                let up = 38
-                let down = 40
-
-                if (keyCode === down) {
+                if (keyCode === ARROW_DOWN) {
                     this.activeOptionIndex = this.nextAvailableOptionIndex(this.filteredOptions, this.activeOptionIndex)
                 }
 
-                if (keyCode === up) {
+                if (keyCode === ARROW_UP) {
                     let reverse = true
                     this.activeOptionIndex = this.nextAvailableOptionIndex(this.filteredOptions, this.activeOptionIndex, reverse)
                 }

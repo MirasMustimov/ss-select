@@ -153,4 +153,21 @@ describe('SsSelect', () => {
         keydown('down')
         expect(vm.activeOptionIndex).toBe(0)
     })
+
+    it('emits open and close events', () => {
+        click('.placeholder')
+        expect(wrapper.emitted().open).toBeTruthy();
+
+        keydown('esc')
+        expect(wrapper.emitted().close).toBeTruthy()
+    })
+
+    it('emits change event on select', () => {
+        click('.placeholder')
+
+        click('.option')
+
+        expect(wrapper.emitted().change).toBeTruthy()
+        expect(wrapper.emitted().change[0][0].name).toBe(songs[0].name)
+    })
 })
