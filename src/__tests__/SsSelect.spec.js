@@ -14,7 +14,7 @@ describe('SsSelect', () => {
         { name: 'Make You Feel Better', disabled: false },
     ]
 
-    let wrapper
+    let wrapper, vm
 
     let click = (selector) => {
         let element = selector ? wrapper.find(selector) : wrapper
@@ -53,46 +53,48 @@ describe('SsSelect', () => {
               `
           }
       })
+
+      vm = wrapper.vm
     });
 
     it('can render options', () => {
         songs.forEach(song => expect(wrapper.html()).toContain(song.name))
     })
 
-    it('can select options by click', () => {
-        expect(wrapper.find('.selected-option').html()).toContain('Select a song')
+    it('can select options on click', () => {
+        expect(vm.selectedOption).toBe(null)
 
         click('.option')
 
-        expect(wrapper.vm.selectedOption.name).toBe(songs[0].name)
+        expect(vm.selectedOption.name).toBe(songs[0].name)
     })
 
     it('can select options on enter key press', () => {
-        expect(wrapper.vm.selectedOption).toBe(null)
+        expect(vm.selectedOption).toBe(null)
 
         click('.placeholder')
         keydown('enter')
-        expect(wrapper.vm.selectedOption.name).toBe(songs[0].name)
+        expect(vm.selectedOption.name).toBe(songs[0].name)
     })
 
     it('opens when placeholder is clicked and closes when option is selected', () => {
-        expect(wrapper.vm.isOpen).toBe(false)
+        expect(vm.isOpen).toBe(false)
         click('.placeholder')
 
-        expect(wrapper.vm.isOpen).toBe(true)
+        expect(vm.isOpen).toBe(true)
 
         click('.option')
-        expect(wrapper.vm.isOpen).toBe(false)
+        expect(vm.isOpen).toBe(false)
     })
 
     it('closes on escape key press', () => {
-        expect(wrapper.vm.isOpen).toBe(false)
+        expect(vm.isOpen).toBe(false)
         click('.placeholder')
 
-        expect(wrapper.vm.isOpen).toBe(true)
+        expect(vm.isOpen).toBe(true)
 
         keydown('esc')
-        expect(wrapper.vm.isOpen).toBe(false)
+        expect(vm.isOpen).toBe(false)
     })
 
     it('closes on outclick', () => {
@@ -100,55 +102,55 @@ describe('SsSelect', () => {
     })
 
     it('can filter options', () => {
-        expect(wrapper.vm.filteredOptions.length).toBe(songs.length)
+        expect(vm.filteredOptions.length).toBe(songs.length)
 
         type('.search-input', songs[0].name)
 
-        expect(wrapper.vm.filteredOptions.length).toBe(1)
-        expect(wrapper.vm.filteredOptions[0].name).toBe(songs[0].name)
+        expect(vm.filteredOptions.length).toBe(1)
+        expect(vm.filteredOptions[0].name).toBe(songs[0].name)
     })
 
     it('changes active option index when option is being hovered', () => {
-        expect(wrapper.vm.activeOptionIndex).toBe(0)
+        expect(vm.activeOptionIndex).toBe(0)
 
         wrapper.findAll('.option').at(1).trigger('mouseover')
 
-        expect(wrapper.vm.activeOptionIndex).toBe(1)
+        expect(vm.activeOptionIndex).toBe(1)
     })
 
     it('changes active option index on navigating using arrow keys', () => {
-        expect(wrapper.vm.activeOptionIndex).toBe(0)
+        expect(vm.activeOptionIndex).toBe(0)
 
         keydown('down')
-        expect(wrapper.vm.activeOptionIndex).toBe(1)
+        expect(vm.activeOptionIndex).toBe(1)
 
         keydown('up')
-        expect(wrapper.vm.activeOptionIndex).toBe(0)
+        expect(vm.activeOptionIndex).toBe(0)
     })
 
     it('skips disabled options when navigating using arrow keys', () => {
-        expect(wrapper.vm.activeOptionIndex).toBe(0)
+        expect(vm.activeOptionIndex).toBe(0)
 
         keydown('down')
-        expect(wrapper.vm.activeOptionIndex).toBe(1)
+        expect(vm.activeOptionIndex).toBe(1)
 
         keydown('down')
-        expect(wrapper.vm.activeOptionIndex).toBe(3)
+        expect(vm.activeOptionIndex).toBe(3)
     })
 
     it('sets last option as active before first', () => {
-        expect(wrapper.vm.activeOptionIndex).toBe(0)
+        expect(vm.activeOptionIndex).toBe(0)
 
         keydown('up')
 
-        expect(wrapper.vm.activeOptionIndex).toBe(wrapper.vm.filteredOptions.length - 1)
+        expect(vm.activeOptionIndex).toBe(vm.filteredOptions.length - 1)
     })
 
     it('sets first option as active after last', () => {
-        expect(wrapper.vm.activeOptionIndex).toBe(0)
+        expect(vm.activeOptionIndex).toBe(0)
         keydown('down')
         keydown('down')
         keydown('down')
-        expect(wrapper.vm.activeOptionIndex).toBe(0)
+        expect(vm.activeOptionIndex).toBe(0)
     })
 })
