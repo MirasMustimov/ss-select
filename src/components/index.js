@@ -1,13 +1,13 @@
 import SsSelect from './SsSelect'
-import SsOption from './SsOption'
-import SsPlaceholder from './SsPlaceholder'
-import SsSearchInput from './SsSearchInput'
+import SsSelectOption from './SsSelectOption'
+import SsSelectPlaceholder from './SsSelectPlaceholder'
+import SsSelectSearchInput from './SsSelectSearchInput'
 
 const SsComponents = {
     SsSelect,
-    SsOption,
-    SsPlaceholder,
-    SsSearchInput,
+    SsSelectOption,
+    SsSelectPlaceholder,
+    SsSelectSearchInput,
 }
 
 const SsSelectPlugin = {
@@ -26,8 +26,8 @@ if (typeof window !== 'undefined' && window.Vue) {
 export default SsSelectPlugin
 
 export { SsSelect }
-export { SsOption }
-export { SsPlaceholder }
-export { SsSearchInput }
+export { SsSelectOption }
+export { SsSelectPlaceholder }
+export { SsSelectSearchInput }
 
 export { SsComponents }

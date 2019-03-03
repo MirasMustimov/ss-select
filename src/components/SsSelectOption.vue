@@ -9,7 +9,7 @@
     import utils from './utils-mixin'
 
     export default {
-        name: 'ss-option',
+        name: 'ss-select-option',
 
         mixins: [ event, utils ],
 

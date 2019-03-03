@@ -1,8 +1,8 @@
 import { mount } from '@vue/test-utils'
-import SsSelect from '../SsComponents/SsSelect'
-import SsOption from '../SsComponents/SsOption'
-import SsSearchInput from '../SsComponents/SsSearchInput'
-import SsPlaceholder from '../SsComponents/SsPlaceholder'
+import SsSelect from '../components/SsSelect'
+import SsSelectOption from '../components/SsSelectOption'
+import SsSelectSearchInput from '../components/SsSelectSearchInput'
+import SsSelectPlaceholder from '../components/SsSelectPlaceholder'
 
 window.HTMLElement.prototype.scrollIntoView = function() {};
 
@@ -35,20 +35,20 @@ describe('SsSelect', () => {
       wrapper = mount(SsSelect, {
           //  if search y is not provided then bugs appear in search algorithm
           propsData: { options: songs, trackBy: 'name', searchBy: 'name', multiple: true },
-          stubs: { SsOption, SsSearchInput, SsPlaceholder },
+          stubs: { SsSelectOption, SsSelectSearchInput, SsSelectPlaceholder },
           scopedSlots: {
               default: `
                   <div slot-scope="{ filteredOptions, selectedOption, isOpen, $selected, $get, $reset }">
-                      <ss-placeholder class="selected-option placeholder">
+                      <ss-select-placeholder class="selected-option placeholder">
                           {{ $get(selectedOption, 'name') }}
                           <button class="reset-button" @click="$reset"></button>
-                      </ss-placeholder>
+                      </ss-select-placeholder>
 
                       <div v-show="isOpen" class="dropdown-list">
-                          <ss-search-input class="search-input"></ss-search-input>
-                          <ss-option v-for="(song, index) in filteredOptions" :index="index" :value="song" :key="song.name" class="option">
+                          <ss-select-search-input class="search-input"></ss-select-search-input>
+                          <ss-select-option v-for="(song, index) in filteredOptions" :index="index" :value="song" :key="song.name" class="option">
                               {{ song.name }}
-                          </ss-option>
+                          </ss-select-option>
                       </div>
                   </div>
               `

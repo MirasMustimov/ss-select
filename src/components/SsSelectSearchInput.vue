@@ -6,7 +6,7 @@
     import event from './event-mixin'
 
     export default {
-        name: 'ss-search-input',
+        name: 'ss-select-search-input',
 
         mixins: [ event ],
 
