@@ -38,9 +38,10 @@ describe('SsSelect', () => {
           stubs: { SsOption, SsSearchInput, SsPlaceholder },
           scopedSlots: {
               default: `
-                  <div slot-scope="{ filteredOptions, selectedOption, isOpen, $selected, $get }">
+                  <div slot-scope="{ filteredOptions, selectedOption, isOpen, $selected, $get, $reset }">
                       <ss-placeholder class="selected-option placeholder">
-                          {{ $get(selectedOption, 'name') || 'Select a song' }}
+                          {{ $get(selectedOption, 'name') }}
+                          <button class="reset-button" @click="$reset"></button>
                       </ss-placeholder>
 
                       <div v-show="isOpen" class="dropdown-list">
@@ -55,7 +56,7 @@ describe('SsSelect', () => {
       })
 
       vm = wrapper.vm
-    });
+    })
 
     it('can render options', () => {
         songs.forEach(song => expect(wrapper.html()).toContain(song.name))
@@ -169,5 +170,13 @@ describe('SsSelect', () => {
 
         expect(wrapper.emitted().change).toBeTruthy()
         expect(wrapper.emitted().change[0][0].name).toBe(songs[0].name)
+    })
+
+    it('can reset selected option', () => {
+        expect(vm.selectedOption).toEqual(null)
+        click('.option')
+        expect(vm.selectedOption.name).toBe(songs[0].name)
+        click('.reset-button')
+        expect(vm.selectedOption).toEqual(null)
     })
 })

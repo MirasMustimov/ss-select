@@ -105,9 +105,9 @@
             selected(option) {
                 if (this.multiple) {
                     return this.contains(this.selectedOption, option, this.trackBy)
-                } else {
-                    return this.get(this.selectedOption, this.trackBy) == this.get(option, this.trackBy)
                 }
+
+                return this.get(this.selectedOption, this.trackBy) == this.get(option, this.trackBy)
             },
 
             disabled(option) {
