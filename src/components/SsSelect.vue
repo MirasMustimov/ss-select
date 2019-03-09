@@ -98,10 +98,15 @@
                 $disabled: this.disabled,
                 $unselect: this.unselect,
                 $reset: this.reset,
+                $open: this.open,
             })
         },
 
         methods: {
+            open() {
+                if (! this.isOpen) this.isOpen = true
+            },
+
             selected(option) {
                 if (this.multiple) {
                     return this.contains(this.selectedOption, option, this.trackBy)
@@ -196,6 +201,7 @@
             filterOptions() {
                 this.busListen('searchInput', query => {
                     this.filteredOptions = this.options.filter(option => {
+                        // TODO: fails if it is an object and seach by is not provided
                         return (this.searchBy ? this.get(option, this.searchBy) : option)
                             .toLowerCase()
                             .includes(query.toLowerCase())
