@@ -111,48 +111,48 @@ describe('SsSelect', () => {
         expect(vm.filteredOptions[0].name).toBe(songs[0].name)
     })
 
-    it('changes active option index when option is being hovered', () => {
-        expect(vm.activeOptionIndex).toBe(0)
+    it('changes pointer index when option is being hovered', () => {
+        expect(vm.pointerIndex).toBe(0)
 
         wrapper.findAll('.option').at(1).trigger('mouseover')
 
-        expect(vm.activeOptionIndex).toBe(1)
+        expect(vm.pointerIndex).toBe(1)
     })
 
-    it('changes active option index on navigating using arrow keys', () => {
-        expect(vm.activeOptionIndex).toBe(0)
+    it('changes pointer index on navigating using arrow keys', () => {
+        expect(vm.pointerIndex).toBe(0)
 
         keydown('down')
-        expect(vm.activeOptionIndex).toBe(1)
+        expect(vm.pointerIndex).toBe(1)
 
         keydown('up')
-        expect(vm.activeOptionIndex).toBe(0)
+        expect(vm.pointerIndex).toBe(0)
     })
 
     it('skips disabled options when navigating using arrow keys', () => {
-        expect(vm.activeOptionIndex).toBe(0)
+        expect(vm.pointerIndex).toBe(0)
 
         keydown('down')
-        expect(vm.activeOptionIndex).toBe(1)
+        expect(vm.pointerIndex).toBe(1)
 
         keydown('down')
-        expect(vm.activeOptionIndex).toBe(3)
+        expect(vm.pointerIndex).toBe(3)
     })
 
     it('sets last option as active before first', () => {
-        expect(vm.activeOptionIndex).toBe(0)
+        expect(vm.pointerIndex).toBe(0)
 
         keydown('up')
 
-        expect(vm.activeOptionIndex).toBe(vm.filteredOptions.length - 1)
+        expect(vm.pointerIndex).toBe(vm.filteredOptions.length - 1)
     })
 
     it('sets first option as active after last', () => {
-        expect(vm.activeOptionIndex).toBe(0)
+        expect(vm.pointerIndex).toBe(0)
         keydown('down')
         keydown('down')
         keydown('down')
-        expect(vm.activeOptionIndex).toBe(0)
+        expect(vm.pointerIndex).toBe(0)
     })
 
     it('emits open and close events', () => {
@@ -178,5 +178,13 @@ describe('SsSelect', () => {
         expect(vm.selectedOption.name).toBe(songs[0].name)
         click('.reset-button')
         expect(vm.selectedOption).toEqual(null)
+    })
+
+    it('resets pointer index when filtered options are updated', () => {
+        keydown('down')
+        expect(vm.pointerIndex).toBe(1)
+
+        type('.search-input', songs[0].name)
+        expect(vm.pointerIndex).toBe(0)
     })
 })

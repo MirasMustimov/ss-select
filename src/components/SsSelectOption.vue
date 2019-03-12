@@ -50,8 +50,8 @@
             },
 
             scrollIntoView() {
-                this.busListen('activeOptionIndexChange', activeOptionIndex => {
-                    if (this.index === activeOptionIndex) {
+                this.busListen('pointerIndexChange', pointerIndex => {
+                    if (this.index === pointerIndex) {
                         this.$el.scrollIntoView({ block: 'nearest' })
                     }
                 })

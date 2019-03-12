@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="flex flex-col items-center justify-center h-screen mb-2">
       <ss-select :options="songs" track-by="name" search-by="name" class="relative">
-        <div slot-scope="{ filteredOptions, selectedOption, isOpen, activeOptionIndex, $selected, $disabled, $get, $open }">
+        <div slot-scope="{ filteredOptions, selectedOption, isOpen, pointerIndex, $selected, $disabled, $get, $open }">
             <ss-select-placeholder class="flex items-center border" :class="[ isOpen ? 'border-blue' : 'border-browny-grey' ]">
                 <ss-select-search-input class="text-grey py-3 px-2 placeholder-text-browny-grey outline-none"
                                         :placeholder="$get(selectedOption, 'name') || 'Pick a song'"
@@ -20,7 +20,7 @@
                                   :class="[
                                         $selected(option) ? 'text-blue' : '',
                                         $disabled(option) ? 'opacity-50 pointer-events-none' : '',
-                                        activeOptionIndex == index ? 'bg-grey-lighter' : ''
+                                        pointerIndex == index ? 'bg-grey-lighter' : ''
                                   ]">
                     {{ option.name }}
                 </ss-select-option>

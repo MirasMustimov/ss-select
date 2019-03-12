@@ -54,7 +54,7 @@
                 selectedOption: this.multiple ? [] : null,
                 filteredOptions: this.options,
                 eventBusId: Math.random().toString(36).substring(7),
-                activeOptionIndex: 0
+                pointerIndex: 0
             }
         },
 
@@ -64,6 +64,7 @@
             }
 
             this.$watch('options', () => this.filteredOptions = this.options)
+            this.$watch('filteredOptions', () => this.pointerIndex = 0)
 
             this.$watch('isOpen', () => this.$emit(this.isOpen ? 'open' : 'close'))
         },
@@ -92,7 +93,7 @@
                 isOpen: this.isOpen,
                 selectedOption: this.selectedOption,
                 selectedOptions: this.selectedOption, // multiple mode api improvement
-                activeOptionIndex: this.activeOptionIndex,
+                pointerIndex: this.pointerIndex,
                 $get: this.get,
                 $selected: this.selected,
                 $disabled: this.disabled,
@@ -191,7 +192,7 @@
             hoverOverOptions() {
                 this.busListen('optionHover', index => {
                     if (! this.disabled(this.filteredOptions[index])) {
-                        this.activeOptionIndex = index
+                        this.pointerIndex = index
                     }
                 })
 
@@ -223,7 +224,7 @@
 
             onEnter(keyCode) {
                 if (keyCode === ENTER) {
-                    this.busEmit('optionSelected', this.filteredOptions[this.activeOptionIndex])
+                    this.busEmit('optionSelected', this.filteredOptions[this.pointerIndex])
                 }
 
                 return this
@@ -231,15 +232,15 @@
 
             onUpAndDown(keyCode) {
                 if (keyCode === ARROW_DOWN) {
-                    this.activeOptionIndex = this.nextAvailableOptionIndex(this.filteredOptions, this.activeOptionIndex)
+                    this.pointerIndex = this.nextAvailableOptionIndex(this.filteredOptions, this.pointerIndex)
                 }
 
                 if (keyCode === ARROW_UP) {
                     let reverse = true
-                    this.activeOptionIndex = this.nextAvailableOptionIndex(this.filteredOptions, this.activeOptionIndex, reverse)
+                    this.pointerIndex = this.nextAvailableOptionIndex(this.filteredOptions, this.pointerIndex, reverse)
                 }
 
-                this.busEmit('activeOptionIndexChange', this.activeOptionIndex)
+                this.busEmit('pointerIndexChange', this.pointerIndex)
 
                 return this
             }
