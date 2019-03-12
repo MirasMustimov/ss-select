@@ -26,6 +26,11 @@
             this.busListen('open', () => {
                 this.$nextTick(() => this.$el.focus())
             })
+
+            this.busListen('close', () => {
+                this.query = ''
+                this.onInput()
+            })
         },
 
         methods: {

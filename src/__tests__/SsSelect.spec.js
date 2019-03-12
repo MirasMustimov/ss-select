@@ -191,4 +191,14 @@ describe('SsSelect', () => {
     it('search input get focused when select is open', () => {
         //
     })
+
+    it('resets search query on select close', () => {
+        click('.placeholder')
+
+        type('.search-input', songs[0].name)
+        expect(wrapper.find('input').element.value).toBe(songs[0].name)
+
+        click('.option')
+        expect(wrapper.find('input').element.value).toBe('')
+    })
 })
