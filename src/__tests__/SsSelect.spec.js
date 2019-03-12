@@ -187,4 +187,8 @@ describe('SsSelect', () => {
         type('.search-input', songs[0].name)
         expect(vm.pointerIndex).toBe(0)
     })
+
+    it('search input get focused when select is open', () => {
+        //
+    })
 })

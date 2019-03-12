@@ -19,10 +19,12 @@
         },
 
         mounted() {
-            this.$el.focus()
-
             this.busListen('selectMounted', () => {
                 if (this.query.length) this.onInput()
+            })
+
+            this.busListen('open', () => {
+                this.$nextTick(() => this.$el.focus())
             })
         },
 

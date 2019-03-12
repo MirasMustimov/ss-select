@@ -66,7 +66,10 @@
             this.$watch('options', () => this.filteredOptions = this.options)
             this.$watch('filteredOptions', () => this.pointerIndex = 0)
 
-            this.$watch('isOpen', () => this.$emit(this.isOpen ? 'open' : 'close'))
+            this.$watch('isOpen', () => {
+                this.$emit(this.isOpen ? 'open' : 'close')
+                this.busEmit(this.isOpen ? 'open' : 'close')
+            })
         },
 
         mounted() {
