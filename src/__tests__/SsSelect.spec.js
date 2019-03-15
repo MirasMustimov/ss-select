@@ -34,6 +34,7 @@ describe('SsSelect', () => {
     beforeEach(() => {
       wrapper = mount(SsSelect, {
           //  if search y is not provided then bugs appear in search algorithm
+          attachToDocument: true,
           propsData: { options: songs, trackBy: 'name', searchBy: 'name' },
           stubs: { SsSelectOption, SsSelectSearchInput, SsSelectPlaceholder },
           scopedSlots: {
@@ -188,8 +189,13 @@ describe('SsSelect', () => {
         expect(vm.pointerIndex).toBe(0)
     })
 
-    it('search input get focused when select is open', () => {
-        //
+    it('search input gets focused when select opens', done => {
+        click('.placeholder')
+
+        vm.$nextTick(() => {
+            expect(wrapper.find('.search-input').element).toBe(document.activeElement)
+            done()
+        })
     })
 
     it('resets search query on select close', () => {
