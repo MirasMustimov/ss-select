@@ -8,7 +8,7 @@
     import event from './event-mixin'
 
     export default {
-        name: 'ss-select-placeholder',
+        name: 'ss-select-toggle',
 
         mixins: [ event ],
 

@@ -1,12 +1,12 @@
 import SsSelect from './SsSelect'
 import SsSelectOption from './SsSelectOption'
-import SsSelectPlaceholder from './SsSelectPlaceholder'
+import SsSelectToggle from './SsSelectToggle'
 import SsSelectSearchInput from './SsSelectSearchInput'
 
 const SsSelectComponents = {
     SsSelect,
     SsSelectOption,
-    SsSelectPlaceholder,
+    SsSelectToggle,
     SsSelectSearchInput,
 }
 
@@ -22,7 +22,7 @@ export default SsSelectPlugin
 
 export { SsSelect }
 export { SsSelectOption }
-export { SsSelectPlaceholder }
+export { SsSelectToggle }
 export { SsSelectSearchInput }
 
 export { SsSelectComponents }

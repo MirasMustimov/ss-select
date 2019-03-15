@@ -2,7 +2,7 @@ import { mount } from '@vue/test-utils'
 import SsSelect from '../components/SsSelect'
 import SsSelectOption from '../components/SsSelectOption'
 import SsSelectSearchInput from '../components/SsSelectSearchInput'
-import SsSelectPlaceholder from '../components/SsSelectPlaceholder'
+import SsSelectToggle from '../components/SsSelectToggle'
 
 window.HTMLElement.prototype.scrollIntoView = function() {};
 
@@ -36,14 +36,14 @@ describe('SsSelect', () => {
           //  if search y is not provided then bugs appear in search algorithm
           attachToDocument: true,
           propsData: { options: songs, trackBy: 'name', searchBy: 'name' },
-          stubs: { SsSelectOption, SsSelectSearchInput, SsSelectPlaceholder },
+          stubs: { SsSelectOption, SsSelectSearchInput, SsSelectToggle },
           scopedSlots: {
               default: `
                   <div slot-scope="{ filteredOptions, selectedOption, isOpen, $selected, $get, $reset }">
-                      <ss-select-placeholder class="selected-option placeholder">
+                      <ss-select-toggle class="selected-option placeholder">
                           {{ $get(selectedOption, 'name') }}
                           <button class="reset-button" @click="$reset"></button>
-                      </ss-select-placeholder>
+                      </ss-select-toggle>
 
                       <div v-show="isOpen" class="dropdown-list">
                           <ss-select-search-input class="search-input"></ss-select-search-input>
@@ -116,14 +116,14 @@ describe('SsSelect', () => {
             wrapper = mount(SsSelect, {
             attachToDocument: true,
             propsData: { options: songs, trackBy: 'name' },
-            stubs: { SsSelectOption, SsSelectSearchInput, SsSelectPlaceholder },
+            stubs: { SsSelectOption, SsSelectSearchInput, SsSelectToggle },
             scopedSlots: {
                 default: `
                     <div slot-scope="{ filteredOptions, selectedOption, isOpen, $selected, $get, $reset }">
-                        <ss-select-placeholder class="selected-option placeholder">
+                        <ss-select-toggle class="selected-option placeholder">
                             {{ $get(selectedOption, 'name') }}
                             <button class="reset-button" @click="$reset"></button>
-                        </ss-select-placeholder>
+                        </ss-select-toggle>
 
                         <div v-show="isOpen" class="dropdown-list">
                             <ss-select-search-input class="search-input"></ss-select-search-input>
