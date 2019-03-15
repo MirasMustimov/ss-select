@@ -34,7 +34,7 @@
             searchBy: {
                 type: String,
                 required: false,
-                default: ''
+                default: null
             },
 
             disableBy: {
@@ -204,6 +204,8 @@
 
             filterOptions() {
                 this.busListen('searchInput', query => {
+                    if (this.searchBy == null) return
+
                     this.filteredOptions = this.options.filter(option => {
                         // TODO: fails if it is an object and seach by is not provided
                         return (this.searchBy ? this.get(option, this.searchBy) : option)

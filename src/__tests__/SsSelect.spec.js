@@ -112,6 +112,40 @@ describe('SsSelect', () => {
         expect(vm.filteredOptions[0].name).toBe(songs[0].name)
     })
 
+    it('doesnt filter options if search-by prop is not provided', () => {
+            wrapper = mount(SsSelect, {
+            attachToDocument: true,
+            propsData: { options: songs, trackBy: 'name' },
+            stubs: { SsSelectOption, SsSelectSearchInput, SsSelectPlaceholder },
+            scopedSlots: {
+                default: `
+                    <div slot-scope="{ filteredOptions, selectedOption, isOpen, $selected, $get, $reset }">
+                        <ss-select-placeholder class="selected-option placeholder">
+                            {{ $get(selectedOption, 'name') }}
+                            <button class="reset-button" @click="$reset"></button>
+                        </ss-select-placeholder>
+
+                        <div v-show="isOpen" class="dropdown-list">
+                            <ss-select-search-input class="search-input"></ss-select-search-input>
+                            <ss-select-option v-for="(song, index) in filteredOptions" :index="index" :value="song" :key="song.name" class="option">
+                                {{ song.name }}
+                            </ss-select-option>
+                        </div>
+                    </div>
+                `
+            }
+        })
+
+        expect(vm.filteredOptions.length).toBe(songs.length)
+
+        type('.search-input', songs[0].name)
+        expect(vm.filteredOptions.length).toBe(songs.length)
+    })
+
+    it('pointer index uses options instead of filtered options when internal search is disabled', () => {
+        //
+    })
+
     it('changes pointer index when option is being hovered', () => {
         expect(vm.pointerIndex).toBe(0)
 
