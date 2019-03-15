@@ -3,7 +3,7 @@ import SsSelectOption from './SsSelectOption'
 import SsSelectPlaceholder from './SsSelectPlaceholder'
 import SsSelectSearchInput from './SsSelectSearchInput'
 
-const SsComponents = {
+const SsSelectComponents = {
     SsSelect,
     SsSelectOption,
     SsSelectPlaceholder,
@@ -12,8 +12,8 @@ const SsComponents = {
 
 const SsSelectPlugin = {
   install(Vue) {
-    Object.keys(SsComponents).forEach(name => {
-        Vue.component(name, SsComponents[name])
+    Object.keys(SsSelectComponents).forEach(name => {
+        Vue.component(name, SsSelectComponents[name])
     })
   },
 }
@@ -25,4 +25,4 @@ export { SsSelectOption }
 export { SsSelectPlaceholder }
 export { SsSelectSearchInput }
 
-export { SsComponents }
+export { SsSelectComponents }

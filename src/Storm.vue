@@ -31,10 +31,10 @@
 </template>
 
 <script>
-  import { SsComponents } from './components'
+  import { SsSelectComponents } from './components'
 
   export default {
-      components: { ...SsComponents },
+      components: { ...SsSelectComponents },
 
       data() {
           return {
