@@ -51,6 +51,11 @@
                 default: false
             },
 
+            disableSelected: {
+                type: Boolean,
+                default: false
+            },
+
             closeOnSelect: {
                 type: Boolean,
                 default: true
@@ -94,7 +99,8 @@
                 selectedOption: this.selectedOption,
                 eventBusId: this.eventBusId,
                 multiple: this.multiple,
-                selected: this.selected
+                selected: this.selected,
+                disabled: this.disabled,
             }
         },
 
@@ -141,7 +147,7 @@
             },
 
             disabled(option) {
-                return !! this.get(option, this.disableBy)
+                return !! this.get(option, this.disableBy) || (this.disableSelected && this.selected(option))
             },
 
             unselect(option) {

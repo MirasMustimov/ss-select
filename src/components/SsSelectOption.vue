@@ -13,6 +13,8 @@
 
         mixins: [ event, utils ],
 
+        inject: [ 'eventBusId', 'selectedOption', 'multiple', 'selected', 'disabled' ],
+
         props: {
             value: {
                 required: true
@@ -33,6 +35,8 @@
         methods: {
             selectable() {
                 this.$el.addEventListener('click', () => {
+                    if (this.disabled(this.value)) return
+
                     if (this.multiple && this.selected(this.value)) {
                         return this.busEmit('optionUnselected', this.value)
                     }
@@ -58,8 +62,6 @@
 
                 return this
             }
-        },
-
-        inject: [ 'eventBusId', 'selectedOption', 'multiple', 'selected' ]
+        }
     }
 </script>

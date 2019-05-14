@@ -1,13 +1,13 @@
 const nextOptionMixin = {
     methods: {
         nextAvailableOptionIndex(options, currentIndex, reverse = false) {
-            if (options.every(option => option.disabled)) {
+            if (options.every(option => this.disabled(option))) {
                 return null
             }
 
             let nextIndex = this.nextIndex(options, currentIndex, reverse)
 
-            if (! options[nextIndex].disabled) {
+            if (! this.disabled(options[nextIndex])) {
                 return nextIndex
             }
 
