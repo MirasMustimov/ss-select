@@ -50,14 +50,16 @@ Requires a div to resolve scoped slot data and methods
 
 ### ss-select props
 
-1. options - Options - Array, required
-2. track-by - unique option key (supports dot notation) - String, required
-3. search-by - option key to filter them by (supports dot notation) - String, optional
-4. disable-by - option key to disable options (supports dot notation) - String, optional
-5. multiple - enable multiple mode, - Boolean, optional, default: false
-6. hide-selected - hide selected options, Boolean, optional, default: false
-7. disable-selected - disable selected options, Boolean, optional, default: false
-8. close-on-select - close select when option is selected, Boolean, optional, default: true
+| Prop | Description | type | required | default |
+|---|---|---|---|---|
+| options | Options | Array | required |  |
+| track-by | Unique option key (supports dot notation)  | String | required |  |
+| search-by | Option key to filter them by (supports dot notation) | String | optional | |
+| disable-by | Option key to disable options (supports dot notation) | String | optional | |
+| multiple | Enable multiple mode | Boolean | optional | false |
+| hide-selected | Hide selected options | Boolean | optional | false |
+| disable-selected | Disable selected options | Boolean | optional | false |
+| close-on-select | Close select when option is selected | Boolean | optional | true |
 
 ### ss-select scoped slot data
 1. options - options that you provided as prop
