@@ -27,8 +27,7 @@
 
             trackBy: {
                 type: String,
-                required: false,
-                default: ''
+                required: true
             },
 
             searchBy: {
