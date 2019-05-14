@@ -43,14 +43,14 @@ Basic usage:
 </ss-select>
 ```
 # Compoennts
-## Ss select
+## ss-select
 Main renderless component that holds other components and provides data like selectedOption, isOpen etc and useful methods.
 Requires a div to resolve scoped slot data and methods
 
 
-### ss-select props
+### `ss-select` props
 
-| Prop | Description | type | required | default |
+| Prop | Description | Type | Required | Default |
 |---|---|---|---|---|
 | options | Options | Array | required |  |
 | track-by | Unique option key (supports dot notation)  | String | required |  |
@@ -61,28 +61,34 @@ Requires a div to resolve scoped slot data and methods
 | disable-selected | Disable selected options | Boolean | optional | false |
 | close-on-select | Close select when option is selected | Boolean | optional | true |
 
-### ss-select scoped slot data
-1. options - options that you provided as prop
-2. filteredOptions - options filtered by search query and by hideSelected prop
-3. isOpen - whether select is open or not
-4. selectedOption - selected option
-5. selectedOptions - selected options
-6. pointerIndex - index of opttion that is currently active (hovered at or pointed at using arrow keys)
 
-### ss-select scoped slot methods
-1. $get(option, key) - gets key of an object (usually used to get selected option name when there can be no selected option)
-2. $selected(option) - check if option is selected
-3. $disabled(option) - check if option is disabled
-4. $unselect(option) - unselect an option
-5. $reset() - reset selected option(-s)
-6. $open() - open select
+### `ss-select` scoped slot data
+| Data | Description |
+|---|---|
+| options | Options that you provided as prop |
+| filteredOptions | Options filtered by search query and by hideSelected prop |
+| isOpen | whether Select is open or not |
+| selectedOption | Selected option |
+| selectedOptions | Selected options |
+| pointerIndex | Index of opttion that is currently active (hovered at or pointed at using arrow keys) |
 
-### ss-select events
+### `ss-select` scoped slot methods
+| Method | Description |
+|---|---|
+| $get(option, key) | Gets key of an object (usually used to get selected option name when there can be no selected option) |
+| $selected(option) | Check if option is selected |
+| $disabled(option) | Check if option is disabled |
+| $unselect(option) | Unselect an option |
+| $reset() | reset selected option(-s) |
+| $open() | open select |
+
+### `ss-select` events
 open()
 close()
 change(selectedOption)
 select(option)
 
+<br />
 
 ## ss-select-toggle
 
