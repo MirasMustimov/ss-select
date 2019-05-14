@@ -44,6 +44,16 @@
 
             multiple: {
                 default: false
+            },
+
+            hideSelected: {
+                type: Boolean,
+                default: false
+            },
+
+            closeOnSelect: {
+                type: Boolean,
+                default: true
             }
         },
 
@@ -179,7 +189,7 @@
 
                     this.$emit('input', this.selectedOption)
                     this.$emit('change', this.selectedOption)
-                    this.isOpen = this.multiple
+                    this.isOpen = !this.closeOnSelect
                 })
 
                 return this
@@ -206,8 +216,7 @@
                     if (this.searchBy == null) return
 
                     this.filteredOptions = this.options.filter(option => {
-                        // TODO: fails if it is an object and seach by is not provided
-                        return (this.searchBy ? this.get(option, this.searchBy) : option)
+                        return this.get(option, this.searchBy)
                             .toLowerCase()
                             .includes(query.toLowerCase())
                     })
