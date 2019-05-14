@@ -1,6 +1,6 @@
 <template>
     <div class="flex items-center justify-center pt-16">
-        <ss-select :options="people" :multiple="true" search-by="name" :hide-selected="true" track-by="name" style="width: 380px" class="relative">
+        <ss-select :options="people" :multiple="true" :hide-selected="true" search-by="name" track-by="name" style="width: 380px" class="relative">
             <div slot-scope="{ filteredOptions, selectedOptions, isOpen, pointerIndex, $get, $unselect, $open }">
                 <ss-select-toggle class="flex justify-between text-gray-600 px-2 py-1 border rounded-sm leading-none">
                     <div class="flex-1">

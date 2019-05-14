@@ -61,7 +61,7 @@
             return {
                 isOpen: false,
                 selectedOption: this.multiple ? [] : null,
-                filteredOptions: this.options,
+                optionsMatchingSearch: this.options,
                 eventBusId: Math.random().toString(36).substring(7),
                 pointerIndex: 0
             }
@@ -113,6 +113,18 @@
                 $reset: this.reset,
                 $open: this.open,
             })
+        },
+
+        computed: {
+            filteredOptions() {
+                if (this.hideSelected && this.multiple) {
+                    let selectedOptionKeys = this.selectedOption.map(option => option[this.trackBy])
+
+                    return this.optionsMatchingSearch.filter(option => !selectedOptionKeys.includes(option[this.trackBy]))
+                }
+
+                return this.optionsMatchingSearch
+            }
         },
 
         methods: {
@@ -215,13 +227,14 @@
                 this.busListen('searchInput', query => {
                     if (this.searchBy == null) return
 
-                    this.filteredOptions = this.options.filter(option => {
+                    this.optionsMatchingSearch = this.options.filter(option => {
                         return this.get(option, this.searchBy)
                             .toLowerCase()
                             .includes(query.toLowerCase())
                     })
 
-                    if (this.filteredOptions.length === 0) {
+                    // TODO: this will not work when hide selected is enabled
+                    if (this.optionsMatchingSearch.length === 0) {
                         this.$emit('noSearchResults')
                     }
                 })
