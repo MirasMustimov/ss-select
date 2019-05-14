@@ -19,8 +19,8 @@
                                 :index="index"
                                 :key="song.name"
                                 :class="[
-                                   pointerIndex == index ? 'bg-blue text-white' : '',
-                                   $selected(song) ? 'bg-purple text-white' : '',
+                                   pointerIndex == index ? 'bg-blue-500 text-white' : '',
+                                   $selected(song) ? 'bg-purple-500 text-white' : '',
                                    $disabled(song) ? 'opacity-50' : ''
                                 ]"
                          class="p-1 border-b cursor-default whitespace-no-wrap">
