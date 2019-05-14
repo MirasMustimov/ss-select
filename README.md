@@ -1,14 +1,20 @@
 Installation:
+```bash
 npm install vue-ss-select
+```
 or
+```bash
 yarn add vue-ss-select
+```
 
 Pull ss components in
+```vue
 import { SsSelect, SsSelectToggle, SsSelectOption, SsSelectSearchInput } from 'vue-ss-select'
 components: { SsSelect, SsSelectToggle, SsSelectOption, SsSelectSearchInput }
+```
 
 Basic usage:
-
+```vue
 <!-- ss-select is the root component. Give it your options and a unique key to track them by. -->
 <ss-select :options="options" track-by="id" search-by="name" class="relative">
     <!-- Then create a div so you can resolve data and methods you need from slot scope -->
@@ -29,6 +35,7 @@ Basic usage:
         </div>
     </div>
 </ss-select>
+```
 
 Ss select
 Main renderless component that holds other components and provides data like selectedOption, isOpen etc and useful methods.
