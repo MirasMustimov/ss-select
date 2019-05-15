@@ -279,9 +279,3 @@
         }
     }
 </script>
-
-<style>
-    .ss-rotate-180 {
-        transform: rotate(180deg);
-    }
-</style>
