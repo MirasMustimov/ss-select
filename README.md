@@ -1,16 +1,16 @@
 Installation:
 ```bash
-npm install vue-ss-select
+npm install ss-select
 ```
 or
 ```bash
-yarn add vue-ss-select
+yarn add ss-select
 ```
 
 Pull ss components in
 ```vue
 <script>
-    import { SsSelect, SsSelectToggle, SsSelectOption, SsSelectSearchInput } from 'vue-ss-select'
+    import { SsSelect, SsSelectToggle, SsSelectOption, SsSelectSearchInput } from 'ss-select'
 
     components: { SsSelect, SsSelectToggle, SsSelectOption, SsSelectSearchInput }
 </script>
@@ -43,10 +43,10 @@ Basic usage:
     </div>
 </ss-select>
 ```
-# Compoennts
+# Components
 ## `ss-select`
-Main renderless component that holds other components and provides data like selectedOption, isOpen etc and useful methods.
-Requires a div to resolve scoped slot data and methods
+Main renderless component that holds other components and provides data like `selectedOption`, `isOpen` etc and useful methods.
+Requires a `div` to resolve `scoped slot` data and methods.
 
 
 ### `ss-select` props
@@ -100,17 +100,17 @@ Has a default slot where you can display selected option title or placeholder.
 
 
 ## `ss-select-option`
-Compoenent to hold values of your options. Has a default slot to show option title.
+Component to hold values of your options. Has a default slot to show option title.
 
 ### `ss-select-option` props
 | Prop | Description | Type | Required | Default |
 |---|---|---|---|---|
 | value | Option object | Object | required |  |
-| index | Numeric index of an option (resolved when looping throught options) | Number | required |  |
+| index | Numeric index of an option (resolved when looping through options) | Number | required |  |
 
 
 ## `ss-select-search-input`
-Component that triggers filtering options. Be sure to provide an option key to `search-by` prop to ss-select component so filtering takes place.
+Component that triggers filtering options. Be sure to provide an option key via `search-by` prop to `ss-select` component so filtering takes place.
 If you don't need filtering in your select then simply don't use this component.
 
 ### `ss-select-search-input` props
@@ -123,18 +123,18 @@ Add input listener to `ss-select-search-input` so you can filter options that yo
 
 #### Ajax search
 When your options need to be pulled from api. Simply add input listener to `ss-select-search-input` component so you can make an api call and change options that you pass to `ss-select` component.
-Make sure to remove `search-by` prop from ss-select if it is provided so default filtering is disabled.
+Make sure to remove `search-by` prop from `ss-select` if it is provided so default filtering is disabled.
 
 #### v-model
 You can bind your data to `ss-select` by setting `v-model`.
 
 #### Disabling options
 Pass `disable-by` prop to ss-select component.
-The prop holds a key in options that defines whenther `$disabled(option)` method will check.
+The prop holds a key in options that `$disabled(option)` method will check.
 
 #### Highlighting options
 To highlights options that are being hovered at or pointed at using arrow keys
-simply compapre option `index` to `pointerIndex` that you can get from `scoped slot`.
+simply compare option `index` to `pointerIndex` that you can get from `scoped slot`.
 
 #### Styling selected options
 Bind classes that you need by checking whether option is selected using `$selected(option)` method that you need to resolve from `scoped slot`.
