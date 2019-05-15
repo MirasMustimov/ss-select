@@ -1,5 +1,7 @@
 # ss-select
 
+[![npm](https://img.shields.io/github/license/miggiboy/ss-select.svg?style=flat-square)](https://github.com/miggiboy/ss-select/blob/master/LICENSE)
+
 > **Searchable stylable select component for VueJS. This component is `renderless` so you are free to customize it however you need to!**
 
 
@@ -18,7 +20,7 @@ or
 yarn add ss-select
 ```
 
-Pull ss components in
+Pull ss-select components in
 ```vue
 <script>
     import { SsSelect, SsSelectToggle, SsSelectOption, SsSelectSearchInput } from 'ss-select'
@@ -151,7 +153,7 @@ simply compare option `index` to `pointerIndex` that you can get from `scoped sl
 Bind classes that you need by checking whether option is selected using `$selected(option)` method that you need to resolve from `scoped slot`.
 
 #### Option groups
-Unfortunately option groups are not supported. PR's are welcome!
+Unfortunately option groups are not supported. PRs are welcome!
 
 ## License
 
