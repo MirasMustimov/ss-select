@@ -1,4 +1,15 @@
-Installation:
+# ss-select
+
+> **Searchable stylable select component for VueJS. This component is `renderless` so you are free to customize it however you need to!**
+
+
+### Features
+- Renderless (customize it how you want to)
+- Single and multiple mode
+- Filtering
+
+
+### Installation:
 ```bash
 npm install ss-select
 ```
@@ -141,3 +152,7 @@ Bind classes that you need by checking whether option is selected using `$select
 
 #### Option groups
 Unfortunately option groups are not supported. PR's are welcome!
+
+## License
+
+[MIT](https://github.com/miggiboy/ss-select/blob/master/LICENSE)
