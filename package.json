@@ -2,7 +2,7 @@
   "name": "ss-select",
   "version": "0.1.2",
   "private": false,
-  "description": "Styleable searchable vue select component",
+  "description": "Stylable searchable vue select component",
   "author": {
     "name": "Miras Mustimov",
     "email": "mustimov.m@gmail.com"

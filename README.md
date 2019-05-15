@@ -84,7 +84,7 @@ Requires a `div` to resolve `scoped slot` data and methods.
 | isOpen | whether Select is open or not |
 | selectedOption | Selected option |
 | selectedOptions | Selected options |
-| pointerIndex | Index of opttion that is currently active (hovered at or pointed at using arrow keys) |
+| pointerIndex | Index of option that is currently active (hovered at or pointed at using arrow keys) |
 
 ### `ss-select` scoped slot methods
 | Method | Description |
@@ -93,8 +93,8 @@ Requires a `div` to resolve `scoped slot` data and methods.
 | $selected(option) | Check if option is selected |
 | $disabled(option) | Check if option is disabled |
 | $unselect(option) | Unselect an option |
-| $reset() | reset selected option(-s) |
-| $open() | open select |
+| $reset() | Reset selected option(-s) |
+| $open() | Open select |
 
 ### `ss-select` events
 open()
@@ -107,7 +107,7 @@ select(option)
 ## `ss-select-toggle`
 
 Component that opens and closes your select on click.
-Has a default slot where you can display selected option title or placeholder.
+Has a default slot where you can display selected option title or a placeholder.
 
 <br />
 
@@ -129,6 +129,7 @@ If you don't need filtering in your select then simply don't use this component.
 ### `ss-select-search-input` props
 Can accept any attribuites of normal html inputs
 
+## Features
 
 #### Custom filtering
 If you need to implement custom filtering algorithm just remove `search-by` prop from `ss-select` that way default filtering will not be triggered.
