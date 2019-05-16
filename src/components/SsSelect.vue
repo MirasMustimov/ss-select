@@ -77,7 +77,7 @@
                 this.selectedOption = this.value
             }
 
-            this.$watch('options', () => this.filteredOptions = this.options)
+            this.$watch('options', () => this.optionsMatchingSearch = this.options)
             this.$watch('filteredOptions', () => this.pointerIndex = 0)
 
             this.$watch('isOpen', () => {
@@ -87,7 +87,8 @@
         },
 
         mounted() {
-            this.$el.classList.add('outline-none')
+            // TODO: fix this
+            this.$el.style.outline = 'none'
 
             this.applyListeners()
 
@@ -151,6 +152,7 @@
             },
 
             unselect(option) {
+                // this code will cause errors when used in single mode
                 let index = this.selectedOption.findIndex(selectedOption => {
                     return this.get(selectedOption, this.trackBy) == this.get(option, this.trackBy)
                 })

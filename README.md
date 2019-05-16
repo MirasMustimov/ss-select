@@ -1,6 +1,6 @@
 # ss-select
 
-[![npm](https://img.shields.io/github/license/miggiboy/ss-select.svg?style=flat-square)](https://github.com/miggiboy/ss-select/blob/master/LICENSE)
+[![npm](https://img.shields.io/github/license/miggiboy/ss-select.svg?style=flat-square)](https://github.com/miggiboy/ss-select/blob/master/LICENSE) [![npm](https://flat.badgen.net/npm/v/ss-select)](https://www.npmjs.com/package/ss-select) [![npm](https://flat.badgen.net/bundlephobia/min/ss-select)]()
 
 > **Searchable stylable select component for VueJS. This component is `renderless` so you are free to customize it however you need to!**
 
@@ -9,6 +9,9 @@
 - Renderless (customize it how you want to)
 - Single and multiple mode
 - Filtering
+- Disabling options
+- Keyboard navigation
+- v-model support
 
 
 ### Installation:
@@ -32,7 +35,7 @@ Pull ss-select components in
 Basic usage:
 ```vue
 <!-- ss-select is the root component. Give it your options and a unique key to track them by. -->
-<ss-select :options="options" track-by="id" search-by="name" class="relative">
+<ss-select v-model="car" :options="options" track-by="id" search-by="name" class="relative">
     <!-- Then create a div so you can resolve data and methods you need from slot scope -->
     <div slot-scope="{ selectedOption, isOpen, $get }">
         <!-- toggle component opens and closes your select dropdown -->
@@ -66,7 +69,7 @@ Requires a `div` to resolve `scoped slot` data and methods.
 
 | Prop | Description | Type | Required | Default |
 |---|---|---|---|---|
-| options | Options | Array | required |  |
+| options | Array of options (objects) | Array | required |  |
 | track-by | Unique option key (supports dot notation)  | String | required |  |
 | search-by | Option key to filter them by (supports dot notation) | String | optional | |
 | disable-by | Option key to disable options (supports dot notation) | String | optional | |
@@ -128,6 +131,7 @@ If you don't need filtering in your select then simply don't use this component.
 
 ### `ss-select-search-input` props
 Can accept any attribuites of normal html inputs
+Supports v-model.
 
 ## Features
 

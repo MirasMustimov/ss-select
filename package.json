@@ -1,6 +1,6 @@
 {
   "name": "ss-select",
-  "version": "0.1.2",
+  "version": "0.1.5",
   "private": false,
   "description": "Stylable searchable vue select component",
   "author": {
@@ -13,7 +13,7 @@
     "type": "git",
     "url": "https://github.com/miggiboy/ss-select"
   },
-  "keywords": [ "vue", "vue-select", "select", "ss-select", "renderless" ],
+  "keywords": [ "vue", "vue-select", "select", "multiple select", "ss-select", "renderless" ],
   "main": "./dist/ss-select.common.js",
   "files": [
     "dist/*",
@@ -30,7 +30,9 @@
     "test": "jest --watch"
   },
   "dependencies": {
-    "outclick": "^0.1.0",
+    "outclick": "^0.1.0"
+  },
+  "peerDependencies": {
     "vue": "^2.5.17"
   },
   "devDependencies": {
