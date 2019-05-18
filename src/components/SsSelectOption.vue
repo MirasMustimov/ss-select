@@ -38,7 +38,7 @@
                     if (this.disabled(this.value)) return
 
                     if (this.multiple && this.selected(this.value)) {
-                        return this.busEmit('optionUnselected', this.value)
+                        return this.busEmit('optionDeselected', this.value)
                     }
 
                     this.busEmit('optionSelected', this.value)

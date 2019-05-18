@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="flex flex-col items-center justify-center h-screen mb-2">
-      <ss-select :options="songs" track-by="name" search-by="name" class="relative" style="width: 12rem">
+      <ss-select :value="selectedSong" :options="songs" track-by="name" search-by="name" class="relative" style="width: 12rem">
         <div slot-scope="{ filteredOptions, selectedOption, isOpen, pointerIndex, $selected, $disabled, $get, $reset }">
           <ss-select-toggle class="flex items-center border p-1 select-none">
             <div class="flex-1">{{ $get(selectedOption, 'name') || 'Pick a song' }}</div>
@@ -34,13 +34,19 @@
 </template>
 
 <script>
-  import { SsSelectComponents } from './components'
+  import { SsSelectComponents } from '../components'
 
   export default {
       components: { ...SsSelectComponents },
 
       data() {
           return {
+              selectedSong: {
+                  band: 'Paramore',
+                  name: 'Ignorance',
+                  disabled: false
+              },
+
               songs: [
                 {
                   band: 'Paramore',

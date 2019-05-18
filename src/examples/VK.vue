@@ -45,7 +45,7 @@
 </template>
 
 <script>
-    import { SsSelectComponents } from './components'
+    import { SsSelectComponents } from '../components'
 
     export default {
         components: { ...SsSelectComponents },

@@ -11,7 +11,6 @@
 - Filtering
 - Disabling options
 - Keyboard navigation
-- v-model support
 
 
 ### Installation:
@@ -74,7 +73,7 @@ Requires a `div` to resolve `scoped slot` data and methods.
 | search-by | Option key to filter them by (supports dot notation) | String | optional | |
 | disable-by | Option key to disable options (supports dot notation) | String | optional | |
 | multiple | Enable multiple mode | Boolean | optional | false |
-| hide-selected | Hide selected options | Boolean | optional | false |
+| hide-selected | Hide selected options (for multiple mode only) | Boolean | optional | false |
 | disable-selected | Disable selected options | Boolean | optional | false |
 | close-on-select | Close select when option is selected | Boolean | optional | true |
 
@@ -95,7 +94,7 @@ Requires a `div` to resolve `scoped slot` data and methods.
 | $get(option, key) | Gets key of an object (usually used to get selected option name when there can be no selected option) |
 | $selected(option) | Check if option is selected |
 | $disabled(option) | Check if option is disabled |
-| $unselect(option) | Unselect an option |
+| $deselect(option) | Deselect an option |
 | $reset() | Reset selected option(-s) |
 | $open() | Open select |
 

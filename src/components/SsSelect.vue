@@ -1,5 +1,5 @@
 <script>
-    import 'outclick'
+    // import 'outclick'
     import event from './event-mixin'
     import utils from './utils-mixin'
     import nextOption from './next-option-mixin'
@@ -73,9 +73,8 @@
         },
 
         created() {
-            if (this.value) {
-                this.selectedOption = this.value
-            }
+            if (this.value) this.selectedOption = this.value
+            this.$watch('value', () => this.selectedOption = this.value)
 
             this.$watch('options', () => this.optionsMatchingSearch = this.options)
             this.$watch('filteredOptions', () => this.pointerIndex = 0)
@@ -116,7 +115,8 @@
                 $get: this.get,
                 $selected: this.selected,
                 $disabled: this.disabled,
-                $unselect: this.unselect,
+                $unselect: this.deselect,
+                $deselect: this.deselect,
                 $reset: this.reset,
                 $open: this.open,
             })
@@ -151,17 +151,22 @@
                 return !! this.get(option, this.disableBy) || (this.disableSelected && this.selected(option))
             },
 
-            unselect(option) {
-                // this code will cause errors when used in single mode
+            deselect(option) {
+                if (this.multiple == false) return
+
                 let index = this.selectedOption.findIndex(selectedOption => {
                     return this.get(selectedOption, this.trackBy) == this.get(option, this.trackBy)
                 })
 
                 this.selectedOption.splice(index, 1)
+                this.$emit('input', this.selectedOption)
+                this.$emit('change', this.selectedOption)
             },
 
             reset() {
                 this.selectedOption = this.multiple ? [] : null
+                this.$emit('input', this.selectedOption)
+                this.$emit('change', this.selectedOption)
             },
 
             applyListeners() {
@@ -169,7 +174,7 @@
                     .clickOutside()
                     .toggleOpen()
                     .selectOptions()
-                    .unselectOptions()
+                    .deselectOptions()
                     .hoverOverOptions()
                     .filterOptions()
             },
@@ -191,9 +196,15 @@
             },
 
             clickOutside() {
-                this.$el.addEventListener('outclick', () => this.isOpen = false)
+                document.addEventListener('click', this.closeOnClickOutside)
 
                 return this
+            },
+
+            closeOnClickOutside(event) {
+                if (!this.$el.contains(event.target) && this.$el !== event.target) {
+                    this.isOpen = false
+                }
             },
 
             toggleOpen() {
@@ -215,8 +226,8 @@
                 return this
             },
 
-            unselectOptions() {
-                this.busListen('optionUnselected', option => this.unselect(option))
+            deselectOptions() {
+                this.busListen('optionDeselected', option => this.deselect(option))
 
                 return this
             },
@@ -233,18 +244,13 @@
 
             filterOptions() {
                 this.busListen('searchInput', query => {
-                    if (this.searchBy == null) return
+                    if (this.searchBy == null) return this
 
                     this.optionsMatchingSearch = this.options.filter(option => {
                         return this.get(option, this.searchBy)
                             .toLowerCase()
                             .includes(query.toLowerCase())
                     })
-
-                    // TODO: this will not work when hide selected is enabled
-                    if (this.optionsMatchingSearch.length === 0) {
-                        this.$emit('noSearchResults')
-                    }
                 })
 
                 return this
@@ -278,6 +284,10 @@
 
                 return this
             }
+        },
+
+        destroyed() {
+            document.removeEventListener('click', this.closeOnClickOutside)
         }
     }
 </script>
