@@ -150,7 +150,7 @@ Pass `disable-by` prop to ss-select component.
 The prop holds a key in options that `$disabled(option)` method will check.
 
 #### Highlighting options
-To highlights options that are being hovered at or pointed at using arrow keys
+To highlight options that are being hovered at or pointed at using arrow keys
 simply compare option `index` to `pointerIndex` that you can get from `scoped slot`.
 
 #### Styling selected options

@@ -28,7 +28,7 @@ if (isDeployPreview) {
 }
 
 module.exports = {
-  title: 'Vue SS Select',
+  title: 'Vue ss select',
   description: meta.description,
   head,
   plugins: {},
