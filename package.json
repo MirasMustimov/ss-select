@@ -35,7 +35,9 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "bundle": "vue-cli-service build --target lib --name ss-select ./src/components/index.js",
-    "test": "jest --watch"
+    "test": "jest --watch",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
   },
   "dependencies": {},
   "peerDependencies": {
@@ -51,7 +53,8 @@
     "babel-jest": "^24.1.0",
     "jest": "^24.1.0",
     "vue-jest": "^3.0.3",
-    "vue-template-compiler": "^2.5.17"
+    "vue-template-compiler": "^2.5.17",
+    "vuepress": "^0.14.11"
   },
   "jest": {
     "testRegex": "./tests/.*.spec.js$",
