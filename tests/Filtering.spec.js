@@ -1,5 +1,7 @@
 import { mountSelect, mountWithParent, options } from './helpers'
 
+window.HTMLElement.prototype.scrollIntoView = function() {}
+
 describe('Filtering', () => {
     it(':search-by defaults to null', () => {
         console.log('implement :search-by defaults to null')

@@ -1,5 +1,7 @@
 import { mountSelect, mountWithParent, options } from './helpers'
 
+window.HTMLElement.prototype.scrollIntoView = function() {}
+
 describe('Disabling', () => {
     it(':disable-selected defaults to false', () => {
         expect(mountSelect().vm.disableSelected).toBe(false)

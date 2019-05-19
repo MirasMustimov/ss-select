@@ -1,5 +1,7 @@
 import { mountWithParent, options } from './helpers'
 
+window.HTMLElement.prototype.scrollIntoView = function() {}
+
 describe('Reset selected option', () => {
     it('can reset selected option in single select', () => {
         let parent = mountWithParent()

@@ -1,5 +1,4 @@
 <script>
-    // import 'outclick'
     import event from './event-mixin'
     import utils from './utils-mixin'
     import nextOption from './next-option-mixin'
@@ -77,7 +76,10 @@
             this.$watch('value', () => this.selectedOption = this.value)
 
             this.$watch('options', () => this.optionsMatchingSearch = this.options)
-            this.$watch('filteredOptions', () => this.pointerIndex = 0)
+            this.$watch('filteredOptions', () => {
+                this.pointerIndex = 0
+                this.busEmit('pointerIndexChange', this.pointerIndex)
+            })
 
             this.$watch('isOpen', () => {
                 this.$emit(this.isOpen ? 'open' : 'close')
@@ -236,6 +238,7 @@
                 this.busListen('optionHover', index => {
                     if (! this.disabled(this.filteredOptions[index])) {
                         this.pointerIndex = index
+                        this.busEmit('pointerIndexChange', this.pointerIndex)
                     }
                 })
 

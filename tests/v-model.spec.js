@@ -1,5 +1,7 @@
 import { mountSelect, mountWithParent, options } from './helpers'
 
+window.HTMLElement.prototype.scrollIntoView = function() {}
+
 describe('v-model', () => {
     it('selectedOption can be initialized from v-model', () => {
         let parent = mountWithParent({ model: options[0] })

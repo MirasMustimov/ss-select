@@ -1,5 +1,7 @@
 import { mountSelect, mountWithParent, options } from './helpers'
 
+window.HTMLElement.prototype.scrollIntoView = function() {}
+
 describe('Deselecting', () => {
     it('can deselect options by clicking on them in multiple mode', () => {
         let parent = mountWithParent({ multiple: true })
