@@ -1,5 +1,10 @@
+## Multiple selection
+Set `multiple` prop to be `true`.
+
+<br><multiple></multiple>
+
 ## Custom filtering
-<custom-filtering></custom-filtering><br>
+<br><custom-filtering></custom-filtering><br>
 
 If you need to implement custom filtering algorithm just remove `search-by` prop from `ss-select` to disable default filtering.
 Add `@input` listener to `ss-select-search-input` so you can filter options that you pass to `ss-select` component yourself.

@@ -53,7 +53,7 @@
                 {
                   band: 'Paramore',
                   name: 'Hard Times',
-                  disabled: true
+                  disabled: false
                 },
 
                 {
