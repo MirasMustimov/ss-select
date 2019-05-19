@@ -1,9 +1,9 @@
 const isDeployPreview = process.env.hasOwnProperty('DEPLOY_PREVIEW');
 
 const meta = {
-  title: 'Vue SS Select | Renderless Select Component',
-  description: 'Searchable stylable select component for VueJS. This component is `renderless` so you are free to customize it however you need to!',
-  url: 'https://vue-ss-select.com',
+  title: 'Vue ss-select | Renderless Select Component',
+  description: 'Stylable searchable select component for VueJS. This component is renderless so you are free to customize it however you need to!',
+  url: 'https://5ce13d113346fb00089966db--festive-edison-f92c64.netlify.com/',
 };
 
 let head = [
@@ -28,7 +28,7 @@ if (isDeployPreview) {
 }
 
 module.exports = {
-  title: 'Vue ss select',
+  title: 'Vue ss-select',
   description: meta.description,
   head,
   plugins: {},

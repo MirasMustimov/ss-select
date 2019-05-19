@@ -8,7 +8,7 @@
     "email": "mustimov.m@gmail.com"
   },
   "license": "MIT",
-  "homepage": "https://github.com/miggiboy/ss-select#ss-select",
+  "homepage": "https://5ce13d113346fb00089966db--festive-edison-f92c64.netlify.com",
   "repository": {
     "type": "git",
     "url": "https://github.com/miggiboy/ss-select"
@@ -35,7 +35,7 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "bundle": "vue-cli-service build --target lib --name ss-select ./src/components/index.js",
-    "test": "jest --watch",
+    "test": "jest",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs"
   },

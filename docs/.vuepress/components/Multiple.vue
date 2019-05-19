@@ -13,11 +13,11 @@
                             </button>
                         </div>
                         <button v-if="selectedOptions.length && !isOpen" @click.stop="$open" type="button" class="focus:outline-none text-sm inline-flex items-center bg-gray-300 rounded-sm px-2 py-px leading-normal">
-                            <div class="mr-2 text-gray-600">Добавить</div>
+                            <div class="mr-2 text-gray-600">Add</div>
                             <svg class="w-3 h-3 fill-current text-gray-500 mt-px" viewBox="0 0 491.86 491.86"><path d="M465.167 211.614H280.245V26.691c0-8.424-11.439-26.69-34.316-26.69s-34.316 18.267-34.316 26.69v184.924H26.69C18.267 211.614 0 223.053 0 245.929s18.267 34.316 26.69 34.316h184.924v184.924c0 8.422 11.438 26.69 34.316 26.69s34.316-18.268 34.316-26.69V280.245H465.17c8.422 0 26.69-11.438 26.69-34.316s-18.27-34.315-26.693-34.315z"/></svg>
                         </button>
                     </section>
-                    <ss-select-search-input v-show="! (selectedOptions.length && !isOpen)" placeholder="Введите имя друга" class="w-full outline-none select-none"></ss-select-search-input>
+                    <ss-select-search-input v-show="! (selectedOptions.length && !isOpen)" placeholder="Enter friend's name" class="w-full outline-none select-none"></ss-select-search-input>
                 </div>
                 <svg class="flex-none inline-block cursor-pointer h-4 w-5 fill-current mt-1" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
             </ss-select-toggle>
@@ -52,13 +52,13 @@
             return {
                 people: [
                     {
-                        name: 'Руслан Бейсембаев',
+                        name: 'Ruslan Beysembabev',
                         avatar_url: 'https://pp.userapi.com/c639717/v639717512/12543/slWBvvt5yUA.jpg?ava=1',
                         belongs_to: 'МУИТ (IITU)',
                     },
 
                     {
-                        name: 'Канат Атымтаев',
+                        name: 'Kanat Atymtaev',
                         avatar_url: 'https://pp.userapi.com/c628131/v628131952/2807e/BJCXe3YqgzI.jpg?ava=1',
                         belongs_to: 'МУИТ (IITU)',
                     },
