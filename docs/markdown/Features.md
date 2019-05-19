@@ -2,11 +2,11 @@
 Set `multiple` prop to be `true`.
 
 <br><multiple></multiple>
-[code](https://github.com/miggiboy/ss-select/blob/docs/docs/.vuepress/components/Multiple.vue)
+[code](https://github.com/miggiboy/ss-select/blob/master/docs/.vuepress/components/Multiple.vue)
 
 ## Custom filtering
 <br><custom-filtering></custom-filtering>
-[code](https://github.com/miggiboy/ss-select/blob/docs/docs/.vuepress/components/CustomFiltering.vue)
+[code](https://github.com/miggiboy/ss-select/blob/master/docs/.vuepress/components/CustomFiltering.vue)
 <br><br>
 
 If you need to implement custom filtering algorithm just remove `search-by` prop from `ss-select` to disable default filtering.
@@ -21,7 +21,7 @@ You can bind your data to `ss-select` by setting `v-model`.
 
 ## Disabling options
 <br><disabling-options></disabling-options>
-[code](https://github.com/miggiboy/ss-select/blob/docs/docs/.vuepress/components/DisablingOptions.vue)
+[code](https://github.com/miggiboy/ss-select/blob/master/docs/.vuepress/components/DisablingOptions.vue)
 <br><br>
 Pass `disable-by` prop to ss-select component.
 The prop holds a key in options that `$disabled(option)` method will check.
@@ -29,7 +29,7 @@ The prop holds a key in options that `$disabled(option)` method will check.
 ## Highlighting options
 
 <br><highlighting-options></highlighting-options>
-[code](https://github.com/miggiboy/ss-select/blob/docs/docs/.vuepress/components/HighlightingOptions.vue)
+[code](https://github.com/miggiboy/ss-select/blob/master/docs/.vuepress/components/HighlightingOptions.vue)
 <br><br>
 
 To highlight options that are being hovered at or pointed at using arrow keys
