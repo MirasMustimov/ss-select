@@ -13,6 +13,10 @@
 - v-model and vuex support
 - No dependencies
 
+### Documentation:
+
+Read [documentation](https://5ce13d113346fb00089966db--festive-edison-f92c64.netlify.com) with examples.
+
 ### Installation:
 ```bash
 npm install ss-select
