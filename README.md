@@ -27,7 +27,7 @@ yarn add ss-select
 ```
 
 Pull ss-select components in
-```vue
+```js
 <script>
     import { SsSelect, SsSelectToggle, SsSelectOption, SsSelectSearchInput } from 'ss-select'
 
@@ -36,7 +36,7 @@ Pull ss-select components in
 ```
 
 Basic usage:
-```vue
+```html
 <!-- ss-select is the root component. Give it your options and a unique key to track them by. -->
 <ss-select v-model="model" :options="options" track-by="id" search-by="name" class="relative">
     <!-- Then create a div so you can resolve data and methods you need from slot scope -->
