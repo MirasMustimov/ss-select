@@ -40,3 +40,21 @@ Bind classes that you need by checking whether option is selected using `$select
 
 ## Option groups
 Unfortunately option groups are not supported. PRs are welcome!
+
+## Submitting html form
+You can create a hidden field and bind selected option value there. See examples
+
+#### Single select
+```html
+<!-- Add hidden field and bind value of selected option -->
+<input type="hidden" name="song" :value="$get(selectedOption, 'name')">
+```
+
+#### Multiple select
+```html
+<!-- Add select field with multiple attribute -->
+<!-- Loop over selected options and create option with selected attribute -->
+<select multiple name="songs[]" class="hidden">
+  <option v-for="option in selectedOptions" :value="option.name" selected></option>
+</select>
+```
