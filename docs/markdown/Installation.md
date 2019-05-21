@@ -8,12 +8,25 @@ or
 yarn add ss-select
 ```
 
-Pull ss-select components in
+<br>
+
+Import components
 ```vue
 <script>
     import { SsSelect, SsSelectToggle, SsSelectOption, SsSelectSearchInput } from 'ss-select'
 
     components: { SsSelect, SsSelectToggle, SsSelectOption, SsSelectSearchInput }
+</script>
+```
+
+<br>
+
+Or register them globally
+```vue
+<script>
+    import SsSelect from 'ss-select'
+
+    Vue.use(SsSelect)
 </script>
 ```
 
