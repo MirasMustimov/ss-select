@@ -41,6 +41,9 @@ Bind classes that you need by checking whether option is selected using `$select
 ## Option groups
 Unfortunately option groups are not supported. PRs are welcome!
 
+## Max selections
+If you need to limit the number of options user can select add `max` prop to `ss-select` component.
+
 ## Submitting html form
 You can create a hidden field and bind selected option value there. See examples
 

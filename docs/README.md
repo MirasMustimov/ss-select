@@ -6,7 +6,7 @@
 
 
 ### Features
-- Renderless (customize it how you want to)
+- Renderless
 - Single and multiple mode
 - Filtering
 - Disabling options

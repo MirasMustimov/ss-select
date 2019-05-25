@@ -58,6 +58,11 @@
             closeOnSelect: {
                 type: Boolean,
                 default: true
+            },
+
+            max: {
+                type: Number,
+                default: null
             }
         },
 
@@ -217,8 +222,16 @@
 
             selectOptions() {
                 this.busListen('optionSelected', option => {
-                    if (this.multiple) this.selectedOption.push(option)
-                    else this.selectedOption = option
+                    if (this.multiple) {
+                        if (this.max !== null && this.selectedOption.length >= this.max) {
+                            return
+                        }
+
+                        this.selectedOption.push(option)
+
+                    } else {
+                        this.selectedOption = option
+                    }
 
                     this.$emit('input', this.selectedOption)
                     this.$emit('change', this.selectedOption)

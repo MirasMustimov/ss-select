@@ -15,6 +15,7 @@ Requires a `div` to resolve `scoped slot` data and methods.
 | hide-selected | Hide selected options (for multiple mode only) | Boolean | optional | false |
 | disable-selected | Disable selected options | Boolean | optional | false |
 | close-on-select | Close select when option is selected | Boolean | optional | true |
+| max | Limit number of allowed selections | Number | optional | null |
 
 
 ### `ss-select` scoped slot data
