@@ -37,6 +37,7 @@ module.exports = {
     docsDir: 'docs',
     nav: [
       {text: 'Home', link: '/'},
+      {text: 'Github', link: 'https://github.com/miggiboy/ss-select'},
     ],
     sidebar: {
       '/': [
