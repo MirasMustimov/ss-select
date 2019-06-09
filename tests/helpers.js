@@ -64,7 +64,7 @@ let mountWithParent = (props = {}) => {
      let parentWrapper = mount({
         data: () => ({
             ...{ model: null, multiple: false },
-            ...{ options, trackBy: 'name', searchBy: 'name'  },
+            ...{ options, trackBy: 'name', searchBy: 'name', clearOnClose: false  },
             ...props
         }),
         template: `<div>
@@ -77,7 +77,7 @@ let mountWithParent = (props = {}) => {
                     </ss-select-toggle>
 
                     <div v-show="isOpen" class="dropdown-list">
-                        <ss-select-search-input class="search-input"></ss-select-search-input>
+                        <ss-select-search-input class="search-input" :clear-on-close="clearOnClose"></ss-select-search-input>
                         <ss-select-option v-for="(song, index) in filteredOptions" :index="index" :value="song" :key="song.name" class="option">
                             {{ song.name }}
                         </ss-select-option>

@@ -10,7 +10,16 @@
 
         mixins: [ event ],
 
-        props: [ 'value' ],
+        props: {
+            value: {
+                default: null
+            },
+
+            clearOnClose: {
+                type: Boolean,
+                default: true
+            }
+        },
 
         data() {
             return {
@@ -28,8 +37,10 @@
             })
 
             this.busListen('close', () => {
-                this.query = ''
-                this.onInput()
+                if (this.clearOnClose) {
+                    this.query = ''
+                    this.onInput()
+                }
             })
         },
 

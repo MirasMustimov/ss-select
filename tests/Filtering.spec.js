@@ -38,16 +38,25 @@ describe('Filtering', () => {
         })
     })
 
-    it('resets search query on select close', () => {
+    it('search input clears on close be default', () => {
         let select = mountSelect()
 
         select.click('.toggle')
 
         select.type('.search-input', options[0].name)
-        expect(select.find('input').element.value).toBe(options[0].name)
 
-        select.click('.option')
-        expect(select.find('input').element.value).toBe('')
+        select.click('.option') // this will close select
+        expect(select.find('.search-input').element.value).toBe('')
+    })
+
+    it('preserves search query when :clear-on-close=false', () => {
+        let parent = mountWithParent({ clearOnClose: false })
+
+        parent.click('.toggle')
+        parent.type('.search-input', options[0].name)
+
+        parent.click('.option') // this will close select
+        expect(parent.find('.search-input').element.value).toBe(options[0].name)
     })
 
     it('removes selected options from filtered options if :hide-selected=true', () => {
