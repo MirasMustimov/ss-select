@@ -280,7 +280,9 @@
 
             onEnter(keyCode) {
                 if (keyCode === ENTER) {
-                    this.busEmit('optionSelected', this.filteredOptions[this.pointerIndex])
+                    if (! this.disabled(this.filteredOptions[this.pointerIndex])) {
+                        this.busEmit('optionSelected', this.filteredOptions[this.pointerIndex])
+                    }
                 }
 
                 return this

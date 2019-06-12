@@ -16,4 +16,17 @@ describe('Disabling', () => {
 
         expect(select.vm.disabled(options[0])).toBe(true)
     })
+
+    it('disabled option cannot be selected', () => {
+        let select = mountSelect({
+            options: [ { name: 'Californicattion', disabled: true } ],
+            disableBy: 'disabled'
+        })
+
+        select.click('.option')
+        expect(select.vm.selectedOption).toBe(null)
+
+        select.keydown('enter')
+        expect(select.vm.selectedOption).toBe(null)
+    })
 })
