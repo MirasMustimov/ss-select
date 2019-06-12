@@ -11,6 +11,17 @@ describe('Pointer index', () => {
         expect(select.vm.pointerIndex).toBe(0)
     })
 
+    it('is set to 1 if first option is disabled', () => {
+        let selectWithDisabledOption = mountSelect({
+            options: [
+                { name: 'Death Note', disabled: true },
+                { name: 'Black Clover', disabled: false },
+            ]
+        })
+
+        expect(selectWithDisabledOption.vm.pointerIndex).toBe(1)
+    })
+
     it('changes pointer index when option is being hovered', () => {
         expect(select.vm.pointerIndex).toBe(0)
 

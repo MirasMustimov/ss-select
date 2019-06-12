@@ -23,6 +23,8 @@ describe('Disabling', () => {
             disableBy: 'disabled'
         })
 
+        select.vm.pointerIndex = 0
+
         select.click('.option')
         expect(select.vm.selectedOption).toBe(null)
 

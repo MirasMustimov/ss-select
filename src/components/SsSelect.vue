@@ -72,7 +72,7 @@
                 selectedOption: this.multiple ? [] : null,
                 optionsMatchingSearch: this.options,
                 eventBusId: Math.random().toString(36).substring(7),
-                pointerIndex: 0
+                pointerIndex: null
             }
         },
 
@@ -80,11 +80,10 @@
             if (this.value) this.selectedOption = this.value
             this.$watch('value', () => this.selectedOption = this.value)
 
+            this.setPointerIndexToOrNextEnabled(0)
+
             this.$watch('options', () => this.optionsMatchingSearch = this.options)
-            this.$watch('filteredOptions', () => {
-                this.pointerIndex = 0
-                this.busEmit('pointerIndexChange', this.pointerIndex)
-            })
+            this.$watch('filteredOptions', () => this.setPointerIndexToOrNextEnabled(0))
 
             this.$watch('isOpen', () => {
                 this.$emit(this.isOpen ? 'open' : 'close')
@@ -117,7 +116,7 @@
                 filteredOptions: this.filteredOptions,
                 isOpen: this.isOpen,
                 selectedOption: this.selectedOption,
-                selectedOptions: this.selectedOption, // multiple mode api improvement
+                selectedOptions: this.selectedOption,
                 pointerIndex: this.pointerIndex,
                 $get: this.get,
                 $selected: this.selected,
@@ -301,6 +300,16 @@
                 this.busEmit('pointerIndexChange', this.pointerIndex)
 
                 return this
+            },
+
+            setPointerIndexToOrNextEnabled(index) {
+                if (this.disabled(this.filteredOptions[index])) {
+                    this.pointerIndex = this.nextAvailableOptionIndex(this.filteredOptions, index)
+                } else {
+                    this.pointerIndex = index
+                }
+
+                this.busEmit('pointerIndexChange', this.pointerIndex)
             }
         },
 
