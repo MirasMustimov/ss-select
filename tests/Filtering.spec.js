@@ -59,6 +59,20 @@ describe('Filtering', () => {
         expect(parent.find('.search-input').element.value).toBe(options[0].name)
     })
 
+    it('filteredOptions change when options prop is changed', () => {
+        let select = mountSelect({ options })
+        expect(select.vm.filteredOptions.length).toEqual(options.length)
+
+        let newOptions = [
+            { name: 'Young and Beautiful' },
+            { name: 'Summertime Sadness' }
+        ]
+
+        select.setProps({ options: newOptions })
+        expect(select.vm.filteredOptions.length).toEqual(newOptions.length)
+        expect(select.vm.filteredOptions[0].name).toEqual(newOptions[0].name)
+    })
+
     it('removes selected options from filtered options if :hide-selected=true', () => {
         let select = mountSelect({ hideSelected: true, multiple: true })
 
