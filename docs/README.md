@@ -10,6 +10,11 @@
 
 > **Searchable stylable select component for VueJS. This component is `renderless` so you are free to customize it however you need to!**
 
+<br>
+
+### Demo: <a href="https://codesandbox.io/s/ss-select-613v2?fontsize=14&hidenavigation=1&module=%2Fsrc%2FSelect.vue" target="_blank">play with it online!</a>
+
+<br>
 
 ### Features
 - Renderless

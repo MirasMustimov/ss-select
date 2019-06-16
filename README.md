@@ -18,6 +18,10 @@
 
 Read [documentation](https://festive-edison-f92c64.netlify.com/) with examples.
 
+### Demo:
+<a href="https://codesandbox.io/s/ss-select-613v2?fontsize=14&hidenavigation=1&module=%2Fsrc%2FSelect.vue" target="_blank">Play with it online!</a>
+
+
 ### Installation:
 ```bash
 npm install ss-select
