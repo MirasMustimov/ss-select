@@ -69,5 +69,8 @@ Component that triggers filtering options. Be sure to provide an option key via 
 If you don't need filtering in your select then simply don't use this component.
 
 ### `ss-select-search-input` props
-Can accept any attribuites of normal html inputs
-Supports v-model.
+| Prop | Description | Type | Required | Default |
+|---|---|---|---|---|
+| clear-on-close | clear input on select close | Boolean | optional | true |
+
+Can accept any attribuites of normal html inputs. Supports `v-model`.
