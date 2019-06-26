@@ -31,7 +31,11 @@ module.exports = {
   title: 'Vue ss-select',
   description: meta.description,
   head,
-  plugins: {},
+  plugins: {
+    '@vuepress/google-analytics': {
+      ga: 'UA-142863922-1',
+    },
+  },
   themeConfig: {
     editLinks: true,
     docsDir: 'docs',
