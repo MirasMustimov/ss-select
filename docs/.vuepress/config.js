@@ -42,6 +42,7 @@ module.exports = {
     nav: [
       {text: 'Home', link: '/'},
       {text: 'Github', link: 'https://github.com/miggiboy/ss-select'},
+      {text: 'Live Demo', link: 'https://codesandbox.io/s/ss-select-613v2?fontsize=14&hidenavigation=1&module=%2Fsrc%2FSelect.vue'},
     ],
     sidebar: {
       '/': [
