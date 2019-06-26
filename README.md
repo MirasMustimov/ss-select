@@ -70,4 +70,4 @@ Basic usage:
 
 ## License
 
-[MIT](https://github.com/miggiboy/ss-select/blob/master/LICENSE)
+[MIT](https://github.com/miggiboy/ss-select/blob/master/LICENSE.md)
