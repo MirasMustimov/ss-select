@@ -2,7 +2,7 @@ const isDeployPreview = process.env.hasOwnProperty('DEPLOY_PREVIEW');
 
 const meta = {
   title: 'Vue ss-select | Renderless Select Component',
-  description: 'Stylable searchable select component for VueJS. This component is renderless so you are free to customize it however you need to!',
+  description: 'Stylable searchable select component for VueJS. This component is renderless so you are free to customize it how you need to!',
   url: 'https://ss-select.netlify.com/',
 };
 
