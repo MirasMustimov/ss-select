@@ -34,7 +34,7 @@
 
         mounted() {
             this.busListen('selectMounted', () => {
-                if (this.query.length) this.onInput()
+                if (this.query.length) this.emitInputEvents()
             })
 
             this.busListen('open', () => {
@@ -44,7 +44,7 @@
             this.busListen('close', () => {
                 if (this.clearOnClose) {
                     this.query = ''
-                    this.onInput()
+                    this.emitInputEvents()
                 }
             })
         },
@@ -55,6 +55,10 @@
                     this.query = e.target.value
                 }
 
+                this.emitInputEvents()
+            },
+
+            emitInputEvents() {
                 this.$emit('input', this.query)
                 this.busEmit('searchInput', this.query)
             }
