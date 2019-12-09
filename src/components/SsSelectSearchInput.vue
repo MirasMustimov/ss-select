@@ -1,5 +1,5 @@
 <template>
-    <input type="text" v-model="query" @input="onInput" autofocus autocomplete="off">
+    <input type="text" v-model="query" @input="onInput($event)" autofocus autocomplete="off">
 </template>
 
 <script>
