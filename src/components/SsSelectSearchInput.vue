@@ -15,6 +15,11 @@
                 default: null
             },
 
+            eager: {
+                type: Boolean,
+                default: false
+            },
+
             clearOnClose: {
                 type: Boolean,
                 default: true
@@ -45,7 +50,11 @@
         },
 
         methods: {
-            onInput() {
+            onInput(e) {
+                if (this.eager) {
+                    this.query = e.target.value
+                }
+
                 this.$emit('input', this.query)
                 this.busEmit('searchInput', this.query)
             }
