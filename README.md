@@ -1,5 +1,3 @@
-**Please note that this package is still under active development. We encourage everyone to try it and give feedback.**
-
 # ss-select
 
 [![npm](https://flat.badgen.net/npm/v/ss-select)](https://www.npmjs.com/package/ss-select) [![npm](https://flat.badgen.net/npm/dm/ss-select)](https://www.npmjs.com/package/ss-select) [![npm](https://flat.badgen.net/bundlephobia/min/ss-select)](https://bundlephobia.com/result?p=ss-select) [![npm](https://flat.badgen.net/travis/miggiboy/ss-select)](https://flat.badgen.net/travis/miggiboy/ss-select) [![npm](https://img.shields.io/github/license/miggiboy/ss-select.svg?style=flat-square)](https://github.com/miggiboy/ss-select/blob/master/LICENSE.md)
